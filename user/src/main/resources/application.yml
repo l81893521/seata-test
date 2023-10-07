@@ -10,3 +10,10 @@ spring:
     # driver-class-name: com.mysql.jdbc.Driver
     # mysql 8 driver
     driver-class-name: com.mysql.cj.jdbc.Driver
+
+seata:
+  service:
+    vgroupMapping:
+      default_tx_group: default
+    grouplist:
+      default: 127.0.0.1:8091

@@ -16,4 +16,9 @@ public class SaveAccountReq {
      * 金钱
      */
     private BigDecimal money;
+
+    /**
+     * 是否抛出异常
+     */
+    private Boolean throwEx;
 }

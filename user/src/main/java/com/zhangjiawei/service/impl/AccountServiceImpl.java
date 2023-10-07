@@ -2,6 +2,7 @@ package com.zhangjiawei.service.impl;
 
 import com.zhangjiawei.dto.SaveAccountReq;
 import com.zhangjiawei.service.AccountService;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,13 +24,18 @@ public class AccountServiceImpl implements AccountService {
     private JdbcTemplate jdbcTemplate;
 
     @Override
+    @GlobalTransactional
     public String saveAccount(SaveAccountReq saveAccountReq) {
         if (saveAccountReq.getMoney() == null) {
             throw new RuntimeException("缺少参数");
         }
+
         jdbcTemplate.update("insert into account_tbl(USER_ID, money, information, create_time) values (?, ?, ?, now())",
                 UUID.randomUUID().toString(), saveAccountReq.getMoney(), "hello world".getBytes());
 
+        if (saveAccountReq.getThrowEx()) {
+            throw new RuntimeException("触发异常");
+        }
         return "success";
     }
 }

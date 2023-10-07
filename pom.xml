@@ -20,6 +20,9 @@
 
     <properties>
 
+        <!-- seata -->
+        <seata.version>1.8.0-SNAPSHOT</seata.version>
+
         <!-- 数据库 -->
         <mysql-connector.version>5.1.31</mysql-connector.version>
         <mysql-8-connector.version>8.0.16</mysql-8-connector.version>
@@ -28,8 +31,15 @@
     </properties>
 
     <dependencyManagement>
-        <!-- 数据库 -->
+
         <dependencies>
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-spring-boot-starter</artifactId>
+                <version>${seata.version}</version>
+            </dependency>
+
+            <!-- 数据库 -->
 <!--            <dependency>-->
 <!--                <groupId>mysql</groupId>-->
 <!--                <artifactId>mysql-connector-java</artifactId>-->
