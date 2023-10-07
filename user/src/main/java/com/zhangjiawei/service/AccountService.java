@@ -1,5 +1,7 @@
 package com.zhangjiawei.service;
 
+import com.zhangjiawei.dto.SaveAccountReq;
+
 /**
  * @description:
  * @author: zhangjiawei
@@ -9,6 +11,7 @@ public interface AccountService {
 
     /**
      * 保存账户
+     * @param saveAccountReq
      */
-    String saveAccount();
+    String saveAccount(SaveAccountReq saveAccountReq);
 }

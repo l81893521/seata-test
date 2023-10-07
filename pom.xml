@@ -17,5 +17,36 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.1.4</version>
     </parent>
+
+    <properties>
+
+        <!-- 数据库 -->
+        <mysql-connector.version>5.1.31</mysql-connector.version>
+        <mysql-8-connector.version>8.0.16</mysql-8-connector.version>
+
+        <lombok.version>1.18.20</lombok.version>
+    </properties>
+
+    <dependencyManagement>
+        <!-- 数据库 -->
+        <dependencies>
+<!--            <dependency>-->
+<!--                <groupId>mysql</groupId>-->
+<!--                <artifactId>mysql-connector-java</artifactId>-->
+<!--                <version>${mysql-connector.version}</version>-->
+<!--            </dependency>-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-8-connector.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     
 </project>
