@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+AbstractRmHandler -> AbstractRmHandler: doBranchRollback
+AbstractRmHandler -> DataSourceManager: branchRollback
+DataSourceManager -> AbstractUndoLogManager: undo
+hnote over AbstractUndoLogManager: find undo log(for update)
+AbstractUndoLogManager -> CompressorFactory: getCompressor
+CompressorFactory -> AbstractUndoLogManager:NONE, GZIP, ZIP...
+AbstractUndoLogManager -> UndoLogParserFactory: getInstance
+UndoLogParserFactory -> AbstractUndoLogManager: JACKSON, FASTJSON, KRYO, PROTOSTUFF
+    loop reverse BranchUndoLog.sqlUndoLogs
+        AbstractUndoLogManager -> TableMetaCacheFactory: getTableMetaCache
+    end
+@enduml
